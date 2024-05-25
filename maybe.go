@@ -4,13 +4,13 @@ import "fmt"
 
 func main() {
 
-	inputs := [][]uint16{
+	inputs := [][]int32{
 		{1, 2, 3, 4},
 		{2, 3, 3, 3},
 		{4, 4, 2, 1},
 	}
 
-	weights := [][]uint16{
+	weights := [][]int32{
 		{3, 5, 1, 3},
 		{2, 3, 2, 1},
 		{0, 1, 3, 6},
@@ -21,12 +21,12 @@ func main() {
 	MatrixProduct(inputs, transposedWeights)
 }
 
-func Transpose(slice [][]uint16) [][]uint16 {
+func Transpose(slice [][]int32) [][]int32 {
 	xl := len(slice[0])
 	yl := len(slice)
-	result := make([][]uint16, xl)
+	result := make([][]int32, xl)
 	for i := range result {
-		result[i] = make([]uint16, yl)
+		result[i] = make([]int32, yl)
 	}
 	for i := 0; i < xl; i++ {
 		for j := 0; j < yl; j++ {
@@ -36,7 +36,7 @@ func Transpose(slice [][]uint16) [][]uint16 {
 	return result
 }
 
-func MatrixProduct(m1 [][]uint16, m2 [][]uint16) [][]uint16 {
+func MatrixProduct(m1 [][]int32, m2 [][]int32) [][]int32 {
 	//TODO I think I messed up and swapped which is which (a vs b) compared to most libraries - should address that at some point maybe
 
 	//Validate that these matrices can be multiplied in the first place
@@ -49,9 +49,9 @@ func MatrixProduct(m1 [][]uint16, m2 [][]uint16) [][]uint16 {
 		panic("Lengths must equal for m1 inner & m2 outer")
 	}
 
-	product := make([][]uint16, m2Length)
+	product := make([][]int32, m2Length)
 	for i := range m2Length {
-		product[i] = make([]uint16, m2Length)
+		product[i] = make([]int32, m2Length)
 		for j := range m2Length {
 			dpSum := m1[i][j] + m2[j][i]
 			product[i][j] = dpSum
