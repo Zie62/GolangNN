@@ -1,4 +1,4 @@
-module ai.with.the.braids/goingnowhere
+module github.com/Zie62/GolangNN
 
 go 1.22.2
 
