@@ -1,0 +1,1 @@
+This is just for me to learn about Neural Networks by implementing the underlying concepts in Golang. I am starting with the math functionality, which I will then map on to structs such as 2dMatrix or Vector.
