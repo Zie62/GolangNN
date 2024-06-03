@@ -16,7 +16,7 @@ func TestVectorDotProduct(t *testing.T) {
 }
 
 func TestTranspose(t *testing.T) {
-	weights := [][]int32{
+	weights := [][]int{
 		{3, 5, 1, 3},
 		{2, 3, 2, 1},
 		{0, 1, 3, 6},
@@ -31,13 +31,13 @@ func TestTranspose(t *testing.T) {
 }
 
 func TestMatrixProduct(t *testing.T) {
-	inputs := [][]int32{
+	inputs := [][]int{
 		{1, 2, 3, 4},
 		{2, 3, 3, 3},
 		{4, 4, 2, 1},
 	}
 
-	weights := [][]int32{
+	weights := [][]int{
 		{3, 5, 1, 3},
 		{2, 3, 2, 1},
 		{0, 1, 3, 6},
@@ -47,6 +47,12 @@ func TestMatrixProduct(t *testing.T) {
 
 	//TODO: Validate the product we get out contains the expected values & shape
 	product := MatrixProduct(inputs, transposedWeights)
+
+	//We should get a 3x3 since we are multiplying a 3x4 and 4x3 matrix
+	assert.Equal(t, 3, len(product))
+	assert.Equal(t, 3, len(product[0]))
+
+	//Validate a couple of specific values for this test
 
 	if product == nil {
 		panic("ahhhhhhh")
